@@ -1,0 +1,70 @@
+Index:
+
+ Index giúp tối ưu hóa truy vấn trong SQL.
+Sử dụng @Index trong Spring Data JPA để tạo index trên một hoặc nhiều cột
+
+Ưu điểm:
+Tăng tốc độ truy vấn: Index giúp truy vấn SQL nhanh hơn khi tìm kiếm hoặc lọc dữ liệu.
+Cải thiện hiệu suất: Giảm thời gian truy vấn khi dữ liệu lớn.
+Hỗ trợ ràng buộc duy nhất (unique index): Ngăn chặn dữ liệu trùng lặp.
+
+Nhược điểm:
+Tốn tài nguyên bộ nhớ: Index chiếm dung lượng lưu trữ trên ổ đĩa.
+Làm chậm INSERT, UPDATE, DELETE: Khi có Index, các thao tác này chậm hơn vì cần cập nhật lại index.
+Không phải lúc nào cũng hiệu quả: Nếu lạm dụng index, nó có thể làm giảm hiệu suất thay vì cải thiện.
+
+Transaction:
+
+Transaction trong Spring giúp đảm bảo tính nhất quán dữ liệu khi có lỗi xảy ra.
+Spring Transaction Management hỗ trợ:
+Declarative Transactions (Dùng @Transactional)
+Programmatic Transactions (Dùng TransactionTemplate)
+Các mức Isolation trong Spring Transaction
+READ_UNCOMMITTED
+READ_COMMITTED
+REPEATABLE_READ
+SERIALIZABLE
+
+
+Stored Procedure:
+
+Stored Procedure là một tập hợp các câu lệnh SQL được lưu trữ trong CSDL và có thể được gọi để thực thi.
+Lợi ích:
+✅ Tăng hiệu suất (giảm số lượng truy vấn giữa ứng dụng và CSDL)
+✅ Bảo mật (ẩn logic truy vấn)
+✅ Dễ bảo trì (tách biệt logic DB với ứng dụng)
+
+Ưu điểm:
+Dễ dàng sử dụng, tích hợp với Hibernate
+Nhược điểm:
+Giới hạn trong việc xử lý tham số OUT
+
+Khi nào nên dùng Stored Procedure trong Spring?
+✅ Khi muốn tăng hiệu suất bằng cách giảm số lần gửi truy vấn từ ứng dụng đến CSDL
+✅ Khi cần xử lý logic phức tạp trong CSDL thay vì ứng dụng Java
+✅ Khi cần bảo mật dữ liệu bằng cách giới hạn quyền truy cập trực tiếp vào bảngs.
+
+Trigger:
+
+Trigger là một đoạn mã SQL tự động thực thi khi có sự kiện xảy ra trong CSDL (INSERT, UPDATE, DELETE).
+Dùng để tự động hóa kiểm tra dữ liệu, cập nhật, ghi log...
+Trigger tự động chạy trong CSDL, nhưng ta có thể kiểm tra log từ ứng dụng Spring Boot.
+
+Ưu điểm:
+Tự động kiểm tra dữ liệu .
+Ghi log thay đổi dữ liệu .
+Tự động cập nhật dữ liệu liên quan .
+
+Nhược điểm của Trigger:
+Khó debug → Trigger chạy trong CSDL, khó theo dõi lỗi từ ứng dụng.
+Ảnh hưởng hiệu suất → Nếu trigger xử lý quá nhiều dữ liệu, có thể làm chậm hệ thống.
+Khó di chuyển sang hệ thống khác → Không phải CSDL nào cũng hỗ trợ trigger giống nhau.
+
+Kết luận:
+
+Trigger giúp tự động hóa xử lý dữ liệu trong CSDL.
+Spring Boot có thể kiểm tra dữ liệu trigger tạo ra bằng Repository.
+Cân nhắc khi dùng trigger vì nó có thể ảnh hưởng đến hiệu suất
+
+
+
